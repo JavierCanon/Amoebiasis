@@ -1,11 +1,11 @@
 // ==UserScript==
-// @name         Zeach Cobbler
-// @namespace    https://github.com/RealDebugMonkey/ZeachCobbler
-// @updateURL    http://bit.do/ZeachCobblerJS
-// @downloadURL  http://bit.do/ZeachCobblerJS
+// @name         Acehart Agar.io Mod
+// @namespace    https://github.com/JavierCanon/ZeachCobbler
+// @updateURL    https://raw.githubusercontent.com/JavierCanon/ZeachCobbler/master/ZeachCobbler.user.js
+// @downloadURL  https://raw.githubusercontent.com/JavierCanon/ZeachCobbler/master/ZeachCobbler.user.js
 // @contributer  See full list at https://github.com/RealDebugMonkey/ZeachCobbler#contributers-and-used-code
 // @version      0.22.6
-// @description  Agario powerups
+// @description  Agar.io Mods Based in ZeachCobbler
 // @author       DebugMonkey
 // @match        http://agar.io
 // @match        https://agar.io
