@@ -1,0 +1,22 @@
+{% extends 'layouts/master.html'%} {% set url = '/ranking' %} {% block content %}
+<div id="box">
+	<div id="ranking" class="container">
+		<table class="table table-bordered table-striped table-hover">
+			<thead class="thead-inverse">
+				<tr>
+					<th class="col-4">Nombre</th>
+					<th class="col-4">Clase</th>
+					<th class="col-4">Muertes efectuadas</th>
+				</tr>
+			</thead>
+			{% for character in characters %}
+				<tr>
+					<td>{{character.name}}</td>
+					<td>{{character.class}}</td>
+					<td>{{character.kills}}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</div>
+</div>
+{% endblock %}

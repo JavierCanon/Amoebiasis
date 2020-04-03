@@ -1,0 +1,42 @@
+{
+  "name": "agario-webclient",
+  "version": "0.0.5",
+  "description": "Web-based agar.io client implementation with graphical display",
+  "dependencies": {
+    "agario-client": "^0.0.8"
+  },
+  "devDependencies": {
+    "bower": "^1.4.1",
+    "browserify": "^10.2.4",
+    "gulp": "^3.9.0",
+    "gulp-bower": "0.0.10",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0",
+    "gulp-util": "^3.0.5",
+    "reactify": "^1.1.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "files": [
+    "agario-client.js",
+    "example.js",
+    "packet.js"
+  ],
+  "scripts": {
+    "test": "node example.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GeoffreyFrogeye/agario-webclient.git"
+  },
+  "keywords": [
+    "agar.io",
+    "pixijs"
+  ],
+  "author": "GeoffreyFrogeye",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GeoffreyFrogeye/agario-webclient/issues"
+  },
+  "homepage": "https://github.com/GeoffreyFrogeye/agario-webclient"
+}

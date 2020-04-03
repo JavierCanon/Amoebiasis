@@ -1,0 +1,72 @@
+{% extends "layouts/master.html" %} {% set url = '/' %} {% block content %}
+<div id="header"></div>
+<div id="box" class="jumbotron">
+	<div id="index" class="container">
+		<div class="card">
+			<div class="card-header">
+				<ul class="nav nav-tabs card-header-tabs" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link active" data-toggle="tab" href="#primero" role="tab">Información</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" data-toggle="tab" href="#segundo" role="tab">Cómo jugar</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" data-toggle="tab" href="#tercero" role="tab">Controles</a>
+					</li>
+				</ul>
+			</div>
+			<div class="tab-content">
+				<div class="card-block tab-pane fade show active" id="primero" role="tabpanel">
+					<h4 class="card-title">Quiénes somos</h4>
+					<p class="card-text">Nuestro equipo se compone de tres personas. Los tres somos estudiantes de grado superior de desarrollo de aplicaciones web y Warbo no es ni más ni menos que nuestro proyecto de final de curso.</p>
+					<h4 class="card-title">¿En qué consiste Warbo?</h4>
+					<p class="card-text">Warbo empezó siendo un proyecto muy ambicioso que no ha llegado a ser todo lo que debería dado el escaso tiempo que hemos tenido para desarrollarlo. Tal vez en un futuro retomemos su desarrollo o reutilicemos alguna de sus ideas en otros proyectos, pero de momento, esto es todo lo que podemos ofreceros.
+						<br>
+						<br> En este momento, Warbo es un battle royale con movimiento por casillas. Dispone de varios tipos de personajes y armas y tendrás que derrotar a otros jugadores para subir posiciones en el ránking de muertes. Sin embargo no hay forma de recuperar tu vida, con lo que tendrás que ingeniártelas para golpear a otros jugadores sin ser golpeado. Además, tu contador de muertes se reiniciará cada vez que cierres la ventana de juego. ¿Serás capaz de mantener la posición más alta en el ránking día tras día?</p>
+				</div>
+				<div class="card-block tab-pane fade" id="segundo" role="tabpanel">
+					<h4 class="card-title">Crea tu cuenta</h4>
+					<p class="card-text">Necesitas una cuenta para jugar a Warbo. Podrás tener 3 personajes como máximo.</p>
+					<h4 class="card-title">Entra al juego</h4>
+					<p class="card-text">Aunque veas la pestaña del juego, no podrás entrar a menos que selecciones un personaje. Bastará con desplegar el menú de tu cuenta en la barra de navegación y hacer clic en uno de tus personajes. A continuación verás que podrás entrar al juego sin problemas.</p>
+				</div>
+				<div class="card-block tab-pane fade" id="tercero" role="tabpanel">
+					<img src="/static/img/web/controles.png" alt="Controles">
+				</div>
+			</div>
+		</div>
+		<div class="card-deck">
+			<div class="card">
+				<img class="card-img-top img-fluid" src="/static/img/web/img1.png" alt="Card image cap">
+				<div class="card-block">
+					<h4 class="card-title">Es simple</h4>
+					<p class="card-text">Crea tu personaje y reparte espadazos a diestro y siniestro.</p>
+				</div>
+			</div>
+			<div class="card">
+				<img class="card-img-top img-fluid" src="/static/img/web/img2.png" alt="Card image cap">
+				<div class="card-block">
+					<h4 class="card-title">Ser el más fuerte no implica ser el mejor</h4>
+					<p class="card-text">Vigila tu nivel de vida en todo momento. Sé más inteligente que el resto. </p>
+				</div>
+			</div>
+			<div class="card">
+				<img class="card-img-top img-fluid" src="/static/img/web/img3.png" alt="Card image cap">
+				<div class="card-block">
+					<h4 class="card-title">Compite por la cima</h4>
+					<p class="card-text">Derrota a otros jugadores para avanzar en el ránking. ¿Conseguirás hacerte con el primer lugar?</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+$(document).ready(function() {
+	$('#header').parallax({
+		imageSrc: '/static/img/header.png',
+		zIndex: 10
+	});
+})
+</script>
+{% endblock %}

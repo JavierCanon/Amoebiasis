@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Warbo</title>
+	<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/css/style.css">
+	<link rel="stylesheet" href="/static/css/waves.min.css">
+	<link rel="stylesheet" href="/static/css/font-awesome.min.css">
+	<!-- <link rel="stylesheet" href="/static/css/chat.css"> -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<!-- <script src="/static/js/jquery.js"></script> -->
+	<script src="/static/js/bootstrap.min.js"></script>
+	<script src="/static/js/waves.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/static/js/parallax.min.js"></script>
+	{% block head %}{% endblock %}
+</head>
+
+<body>
+	<nav class="navbar navbar-toggleable-md fixed-top navbar-inverse bg-faded">
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<a class="navbar-brand" href="/">WARBO</a>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item {{ 'active' if url=='/'}}">
+					<a class="nav-link" href="/">Inicio</a>
+				</li>
+				<li class="nav-item {{ 'active' if url=='/ranking'}}">
+					<a class="nav-link" href="/ranking">Ranking</a>
+				</li>
+				{% if sess.user %}
+				<li class="nav-item {{ 'active' if url=='/game'}}">
+					<a class="nav-link" href="/game">Juego</a>
+				</li>
+				{% endif %}
+			</ul>
+			<ul class="navbar-nav navbar-right">
+				{% if sess.user %}
+				<li class="dropdown" id="menuLogout">
+					<a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown" id="navLogout">{{sess.user}}</a>
+					<div class="dropdown-menu">
+						<span>Personajes</span> 
+						{% if sess.characters %} 
+							{% for char in sess.characters %}
+								<form action="/character" method="post">
+									<input type="hidden" name='charname' value="{{char.name}}">
+									<button class="btn btn-warning btn-block" type="submit">{{char.name}}</button>
+								</form>
+							{% endfor %} 
+						{% endif %} 
+						{% if sess.characters_max < 3 %} 
+							<a href="/newchar" class="btn btn-success btn-block">Nuevo</a>
+						{% endif %}
+						<form action="/logout" method="post" class="form" id="formLogout">
+							<input type="hidden" name="url" value="{{url}}">
+							<button type="submit" id="btnLogout" class="btn btn-danger">Logout</button>
+						</form>
+					</div>
+				</li>
+				{% else %}
+				<li class="dropdown" id="menuLogin">
+					<a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown" id="navLogin">Login</a>
+					<div class="dropdown-menu">
+						<form action="/login" method="post" class="form" id="formLogin">
+							<input name="username" placeholder="Usuario" type="text">
+							<input name="password" placeholder="Contraseña" type="password">
+							<input type="hidden" name="url" value="{{url}}">
+							<br>
+							<button type="submit" id="btnLogin" class="btn btn-success">Login</button>
+						</form>
+					</div>
+				</li>
+				<li class="dropdown" id="menuSignup">
+					<a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown" id="navSignup">Signup</a>
+					<div class="dropdown-menu">
+						<form action="/signup" method="post" class="form" id="formSignup">
+							<input name="username" placeholder="Usuario" type="text">
+							<input name="password" placeholder="Contraseña" type="password">
+							<input name="passwordalt" placeholder="Repite la contraseña" type="password">
+							<input type="hidden" name="url" value="{{url}}">
+							<br>
+							<button type="submit" id="btnSignup" class="btn btn-warning">Signup</button>
+						</form>
+					</div>
+				</li>
+				{% endif %}
+			</ul>
+		</div>
+	</nav>
+	<div id="wrap" class="container-fluid">
+		{% if sess.info %}
+			{% if sess.infoType=='danger' %}
+				{% set card='card-danger' %}
+			{% elif sess.infoType=='success' %}
+				{% set card='card-success' %}
+			{% elif sess.infoType=='warning' %}
+				{% set card='card-warning '%}
+			{% endif %}
+			<div class="card {{card}}">
+				<div class="card-block">
+					<h4 class="card-title">Información</h4>
+					<p class="card-text">{{sess.info}}</p>
+				</div>
+			</div>
+		{% endif %} {% block content %}{% endblock %}
+	</div>
+	{% if url != '/game' %}
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="ftext">
+						GitHub
+						<a href="https://github.com/HeasHeartfire/Warbo" target="_new"><img src="/static/img/web/github-logo.png" alt="GitHub Logo" /></a>
+						Contacto
+						<a id="email" href="#" data-toggle="modal" data-target="#myModal"><img src="/static/img/web/email-icon.png" alt="Email icon"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<div class="modal fade" id="myModal">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Contacto</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="form-group row">
+						<label for="miembros" class="col-3 col-form-label">Destinatario: </label>
+						<select name="miembros" class="form-control col-3">
+							<option>Adrián</option>
+							<option>Daniel</option>
+							<option>Guillem</option>
+						</select>
+						<input placeholder="Asunto" class="form-control offset-1 col-5" value="">
+					</div>
+					<div class="form-group row">
+						<textarea class="form-control"></textarea>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary">Enviar mensaje</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endif %}
+	<script>
+	$(document).ready(function() {
+		Waves.attach('.nav-item');
+		Waves.init();
+
+		$('#menuLogin').on('show.bs.dropdown', function() {
+			$(this).toggleClass('nav-item active');
+		});
+		$('#menuLogout').on('show.bs.dropdown', function() {
+			$(this).toggleClass('nav-item active');
+		});
+		$('#menuSignup').on('show.bs.dropdown', function() {
+			$(this).toggleClass('nav-item active');
+		});
+		$('#menuLogin').on('hide.bs.dropdown', function() {
+			$(this).toggleClass('nav-item active');
+		});
+		$('#menuLogout').on('hide.bs.dropdown', function() {
+			$(this).toggleClass('nav-item active');
+		});
+		$('#menuSignup').on('hide.bs.dropdown', function() {
+			$(this).toggleClass('nav-item active');
+		});
+
+		/*$('#email').click(function(e) {
+			e.preventDefault();
+
+		});*/
+	});
+	</script>
+</body>
+
+</html>

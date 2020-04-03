@@ -1,0 +1,29 @@
+{
+   "author": "ShibeKinder",
+   "background": {
+      "scripts": [ "background.js" ]
+   },
+   "browser_action": {
+      "default_icon": "img/btn/icon128.png",
+      "default_title": "Agar.io"
+   },
+   "content_scripts": [ {
+      "js": [ "inject.js" ],
+      "matches": [ "*://agar.io/", "*://agar.io/index.html", "*://agar.io/?ip=*" ],
+      "run_at": "document_start"
+   } ],
+   "description": "ShibeKinder Bots V1.2 English!",
+   "icons": {
+      "128": "img/icon128.png",
+      "16": "img/icon16.png",
+      "48": "img/icon48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApuVMVg0W/mWhJi/82rjQdTWo7tEAvXTxTANhk0YPwTYB56tF0lUyXhyB/bV6TWW0W7dinvk1yeQ0CfDYd+JxvrSp096GgdzHLmv/U/xZvInbyg43EqxLUl8stmqrbCvncKRnRgGUIrAF7ZCB0SfRWU+tRQ82f6xOxFKJh8kfyctQiW8P3PNCwqsX3Jk25/kmg4ccO7OdJkNuqRKw1OouRk2V5D2C77SItCXANBUORdoyh9qOJ7CWKZUU5MOaBaytsZV0tqPWvycCdqJCKPncKIFtHLKSW6mHQymwmRLJEQd1YLhS/hE7VTvb2ffm3w+xbB285lkjrz2izeBY331BuwIDAQAB",
+   "manifest_version": 2,
+   "name": "ShibeKinder Bots",
+   "permissions": [ "*://agar.io/*", "webRequest", "webRequestBlocking" ],
+   "short_name": "Agar.io++",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.0.0",
+   "web_accessible_resources": [ "html/*", "img/*" ]
+}

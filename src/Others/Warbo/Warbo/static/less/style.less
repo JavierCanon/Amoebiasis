@@ -1,0 +1,269 @@
+@import "variables.less";
+body {
+	background-color: @darkGrey !important;
+	font-family: 'Roboto';
+}
+
+#gamechat {
+	position: fixed;
+	bottom: 0;
+	width: 40%;
+	left: 20px;
+	color: #fff;
+	pointer-events: auto;
+	.chatArea {
+		width: 100%;
+		height: 200px;
+		background-color: rgba(0, 0, 0, 0.4);
+		padding: 10px;
+	}
+	.messages {
+		overflow-y: auto;
+		overflow-x: hidden;
+		max-height: 180px;
+		.log {
+			color: purple;
+		}
+		.message {
+			.messageBody {
+				margin-left: 10px;
+				word-wrap: break-word;
+				text-align: justify;
+			}
+		}
+	}
+	.pages,
+	.messages {
+		list-style-type: none;
+		padding: 0px;
+	}
+	&.no-active {
+		pointer-events: none !important;
+		input {
+			display: none;
+		}
+	}
+}
+
+#wrap {
+	margin-top: 48px;
+	padding: 0px;
+	background-color: @darkGrey !important;
+	// box-shadow: 0px 0px 20px 6px rgba(0,0,0,0.26);
+}
+
+.modal-dialog {
+	max-width: 80%;
+	.modal-body {
+		padding: 15px 25px;
+		.row {
+			margin: 0px;
+			margin-bottom: 20px;
+		}
+	}
+}
+
+#index {
+	font-size: 18px;
+	text-align: justify;
+	h1,
+	h2 {
+		text-align: center;
+		.heading;
+	}
+	h2 {
+		margin-bottom: 50px;
+	}
+	div.row:first-of-type {
+		margin-top: 50px;
+	}
+	.card-deck {
+		margin-top: 20px;
+	}
+}
+
+#header {
+	padding: 0px;
+	min-height: 500px;
+	background: transparent;
+}
+
+#ranking {
+	background-color: @lightGrey;
+	padding: 50px;
+}
+
+.navbar {
+	margin-bottom: 0px !important;
+	border-radius: 0px !important;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	transition: width 1s;
+	background-color: @darkGrey !important;
+	border: 0px !important;
+	.navbar-brand {
+		padding: 5px !important;
+	}
+	.nav-link {
+		padding: 12px !important;
+	}
+	.nav-item,
+	.navbar-brand {
+		&.active {
+			background-color: @darkGreenBlue;
+			.nav-link {
+				color: black !important;
+			}
+		}
+	}
+	.nav-link,
+	.navbar-brand {
+		color: @darkGreenBlue !important;
+		.heading;
+		&:hover,
+		&:focus {
+			color: white !important;
+			outline: none;
+		}
+	}
+	.dropdown-menu {
+		padding: 17px;
+		left: unset;
+		right: 0px;
+		text-align: center;
+		border: none;
+		border-radius: unset;
+		margin: 0px;
+		background-color: @darkGreenBlue;
+		.box-shadow;
+		input {
+			margin-bottom: 20px;
+		}
+	}
+}
+
+#box {
+	border-radius: 0px !important;
+	margin: 0px;
+	background-color: @darkGrey !important;
+	div[class^="col-"],
+	h1 {
+		margin-bottom: 20px;
+	}
+}
+
+footer {
+	background-color: @lightGrey;
+	padding: 50px;
+	margin-top: 60px;
+	div[class^="col"] {
+		text-align: center;
+	}
+	.ftext {
+		margin: 0 auto;
+		position: relative;
+		top: 50%;
+		margin-top: -25px;
+		img {
+			width: 50px;
+			height: auto;
+			margin: 0 20px;
+		}
+	}
+}
+
+.card {
+	margin-top: 0px;
+	font-size: 14px;
+	height: 100%;
+	box-shadow: 0px 0px 20px 6px rgba(0, 0, 0, 0.26);
+	border: 0px;
+	border-radius: 0px;
+	.card-img-top {
+		border-radius: 0px;
+	}
+	.tab-content img {
+		width: 100%;
+	}
+}
+
+.dropdown > a > span.green:before {
+	border-left-color: #2dcb73;
+}
+
+#menuLogout {
+	.btn {
+		margin-top: 10px;
+	}
+}
+
+.char {
+	padding: 20px;
+	margin-bottom: 50px;
+	background-color: @lightGrey;
+	ul {
+		list-style-type: none;
+		padding: 0px;
+	}
+}
+
+#habilidades {
+	position: fixed;
+	bottom: 0px;
+	right: 10px;
+	ul {
+		list-style-type: none;
+		padding: 0px;
+		li.disabled::after {
+			content: ' ';
+			position: absolute;
+			top: 0;
+			bottom: 16px;
+			right: 0;
+			left: 0;
+			background-color: rgba(230, 0, 0, 0.56);
+		}
+	}
+	img {
+		display: block;
+		width: 50px;
+		height: auto;
+	}
+}
+
+#barras {
+	position: fixed;
+	top: 60px;
+	left: 20px;
+	padding: 10px;
+	background-color: @lightGrey;
+	.health-bar {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		width: 200px;
+		height: 20px;
+		padding: 5px;
+		background: #ddd;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		position: relative;
+	}
+	.bar {
+		background: #c54;
+		width: 100%;
+		height: 10px;
+		position: relative;
+		transition: width .5s linear;
+	}
+	.hit {
+		background: rgba(255, 255, 255, 0.6);
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: 0px;
+		transition: width .5s linear;
+	}
+}

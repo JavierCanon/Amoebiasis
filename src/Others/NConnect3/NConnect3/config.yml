@@ -1,0 +1,10 @@
+servers:
+  default:
+    address: ws://localhost:443
+    motd:
+    - Welcome to our server!
+nconnect:
+  port: 1000
+  connection-limit: 200
+  connection-ip-limit: 20
+  connection-throttle: 1000

@@ -1,0 +1,46 @@
+html, body{
+	height: 100%;
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #05070e;
+  color:#FFF;
+}
+#background{
+  display:block;
+  position:fixed;
+  pointer-events:none;
+  z-index: -1;
+}
+#heading{
+  position: fixed;
+  margin: 0px auto;
+  width: 100%;
+  text-align: center;
+  margin-top: 260px;
+  -moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;
+  pointer-events: none;
+}
+#heading h1{
+  padding:0px;
+  margin:0px;
+  font-size:70px;
+}
+#Download{
+  position: fixed;
+  margin: 0px auto;
+  width: 100%;
+  text-align: center;
+  margin-top: 415px;
+}
+#Download a{
+  width: 180px;
+  height: 40px;
+  line-height: 25px;
+  font-size: 16px;
+  font-weight: bold;
+}

@@ -1,8 +1,8 @@
-# ZeachCobbler
-## What is Zeach Cobbler?
-ZeachCobbler is a mod for the web game Agario ( http://agar.io ) It included several unique features found in no other mods. Please note that the Agario community at large considers many of the features contained in this mod hacks or cheats as it could be argued that they give you an unfair advantage over others.
+﻿# Amoebiasis
 
-Zeach Cobbler also includes a bot we like to call the "grazer" which helps with the grunt work of collecting food pellets in the early game. 
+Is a mod for the web game [Agario](https://agar.io) It included several unique features found in no other mods. Please note that the Agario community at large considers many of the features contained in this mod hacks or cheats as it could be argued that they give you an unfair advantage over others.
+
+Also includes a bot we like to call the "grazer" which helps with the grunt work of collecting food pellets in the early game.
 
 ## Install instructions:
 **Note: Zeach Cobbler is currently for Chrome Only. It does not work with Firefox+Greasemonkey.**
@@ -11,7 +11,7 @@ Zeach Cobbler also includes a bot we like to call the "grazer" which helps with 
 * https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo
 
 2) Visit the raw version of the script 
-* https://github.com/RealDebugMonkey/ZeachCobbler/raw/master/ZeachCobbler.user.js
+* https://github.com/JavierCanon/Amoebiasis/raw/master/src/ZeachCobbler.user.js
 
 3) Click 'Install' on the script install confirmation page
 
@@ -28,6 +28,8 @@ Zeach Cobbler also includes a bot we like to call the "grazer" which helps with 
 * E - fire at virus near cursor
 * R - Fire at virus near selected blob (virus is highlighted in red)
 * O - Enable/Disable firing at virus by left-mouse click (LMB duplicates 'E' functionality)
+
+####All keys are changeable in options!
 
 ##Feature List
 1. Auto-grazing (bot-like feeding on pellets) with optional target analysis visualization
@@ -54,27 +56,109 @@ Zeach Cobbler also includes a bot we like to call the "grazer" which helps with 
 11. Server Select UI (Thanks to Angal for use of his code)
 12. Automatically save and autofill last-used username
 13. Agariomods.com skins support http://skins.agariomods.com/ 
-14. Agariomods.com style imgur-based skin support 
+14. Connect.Agariomods.com skins support http://connect.agariomods.com/
+15. Agariomods.com style imgur-based skin support 
     * For example use i/m68ZpaW to get http://i.imgur.com/m68ZpaW.jpg as your skin.
-15. bit.do custom url skin support
-    * Generate a custom url link with bit.do, then prefix that word with ` to get a skin
-    * Example: the name `roborex will load http://bit.do/roborex
-16. X/Y coordinate display
-17. 'Time alive' tracker
-18. 'Highest score' tracker
-19. Acid mode support
- 
+16. GitHub avatar skins support
+    * For example use 'PepinCZ to get https://avatars.githubusercontent.com/pepincz as your skin.
+17. X/Y coordinate display
+18. 'Time alive' tracker
+19. 'Highest score' tracker
+20. Acid mode support
+21. Option to change keyboard binds
 
-## What's up with the name?
-It was chosen on a whim. And I like Peach Cobbler.
 
-# Contributers and Used code
-* Angal - For the original Server select UI (now unused)
+## Features
+
+### Current Features:
+
+- [X] ...
+
+
+### Future Features:
+
+- [ ] ...
+
+
+## Screenshots
+
+![](docs/img/screenshoot1.png?raw=true)
+
+
+## Philosophy of Javier Cañon
+* KISS by design and programming. An acronym for "keep it simple, stupid" or "keep it stupid simple", is a design principle. The KISS principle states that most systems work best if they are kept simple rather than made complicated; therefore, simplicity should be a key goal in design, and unnecessary complexity should be avoided. Variations on the phrase include: "Keep it simple, silly", "keep it short and simple", "keep it simple and straightforward", "keep it small and simple", or "keep it stupid simple".
+
+* Select the best tools for the job, use tools that take less time to finish the job.
+* Productivity over complexity and avoid unnecessary complexity for elegant or beauty code.
+
+* Computers are machines, more powerful every year, give them hard work, concentrate on being productive.
+
+
+## Issues and Bug Traking 
+Please submit *bug reports* or *feature requests* on GitHub:
+* [Issue | Request Features](https://github.com/JavierCanon/Amoebiasis/issues)
+
+## Requeriments 
+
+* ...  
+
+## Install 
+
+* [Download Last Build](https://github.com/JavierCanon/Amoebiasis/releases/latest)
+* [Old Installers](https://github.com/JavierCanon/Amoebiasis/releases)
+
+## Development Dependencies and Licenses Requirements 
+
+* Microsoft Windows 8.1, 10.
+* Microsoft .Net Framework Target 4.8
+* Devexpress 19.2.6
+
+## Contributing
+
+Please read [CONTRIBUTING.md](/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+
+## Authors
+
+### Contributors and Used code
+* RealDebugMonkey - https://github.com/RealDebugMonkey/ZeachCobbler
+* albel727 - For the complete rewrite of the grazer into what is now called the 'new grazer'
+* Angal - For the original Server select UI (now unused), click-to-lock multiblob feature, and multiblob grazer feature 
 * Apostolique - debug text output derived from Apostolique's bot code -- https://github.com/Apostolique/Agar.io-bot
 * Electronoob - Imgur skins, Agariomods.com skins, connect.agariomod.com skins
+* Ephemerality - Code review
 * GamerLio - Minimap from his awesome bot -- https://github.com/leomwu/agario-bot
 * Gjum - Bug fixes
+* Pepin - Keyboard Binds Settings, Advanced zoom function
 * Incompetech - For KSP soundtrack music - http://incompetech.com/music/royalty-free/most/kerbalspaceprogram.php
 * Mikeyk730 - stats screen code - https://greasyfork.org/en/scripts/10154-agar-chart-and-stats-screen
-* White Light - Grazer enemy avoidance code
+* posixphreak - Advanced zoom function improvements
+* White Light - Grazer concept and enemy avoidance code
 
+* **Javier Cañon** - *Customization work* - [JavierCanon.com](https://javiercanon.com)
+
+See also the list of [contributors](/AUTHORS.md) who participated in this project.
+
+## Supported by, thanks to 
+
+
+![Caphyon](https://raw.githubusercontent.com/JavierCanon/Social-Office-Browser/master/docs/img/advanced-installer-iconNavLogo.png)
+
+[Caphyon Advanced Installer](https://www.advancedinstaller.com) 
+-- 
+
+![Softcanon](https://github.com/JavierCanon/Social-Office-Webackeitor/raw/master/docs/images/logo_softcanon_200x75.gif) 
+
+[Softcanon](https://www.softcanon.com) 
+-- 
+
+## License
+
+This project is licensed under the GNU AFFERO GENERAL PUBLIC LICENSE Version 3 - see the [LICENSE.md](/LICENSE.md) file for details.
+
+---
+Made with ❤️ by **[Javier Cañon](https://javiercanon.com)**.

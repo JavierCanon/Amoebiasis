@@ -1,0 +1,75 @@
+Presentación de Warbo
+
+Diapositivas:
+
+1. Warbo + Integrantes del equipo + fecha (nota: comentar que pueden preguntar cuando quieran y que no hay imagenes del codigo, la presentacion es mas de que hemos ido haciendo y porque, si quieren algo en concreto: movimiento del jugador, ataque, sonido, etc que lo digan y se enseña en un momento)
+
+2. ¿Que es Warbo? Warbo surgio de la idea de fusionar Habbo (imagen del juego) con algo de rol por turnos, vease Fire Emblem, Final Fantasy Tactics, etc. 
+
+3. De ahí su nombre: War-bo (War = guerra) Aunque la definición de urbandictionary (link a la pagina) sea un poco diferente a la nuestra... (imagen de la definicion de urban dictionary)
+
+4. Una vez sabiendo lo que queriamos hacer empezamos a investigar con que lo hariamos: Laravel, Nodejs, Django... etc. (en lugar de los nombres pueden ser logotipos)
+
+5. Teniendo en mente que el juego queríamos que fuese online la decisión no fue muy dificil pues ya habiamos hecho "cosas" online anteriormente con uno de los frameworks/lenguajes nombrados antes: Nodejs.
+
+6. Para empezar montamos el esqueleto del proyecto (o lo copiamos{link a la pagina de zelda o imagen}) y link de la pagina principal
+
+7. Creamos una base de datos simple para poder registrar usuarios y hacer pruebas de nodejs y MySQL (nodejs=asyncrono como nota para explicar nosotros) (que fue lo que se dicidio usar por llevar mas tiempo con dicho lenguaje) (imagen quiza del login y el signup)
+
+8. A su vez se empezo a investigar alguna libreria (definir que es libreria para la gente que no sepa nada de programacion) que nos facilitase el entorno del juego. Canvas (logo) fue el elegido (tampoco es que conocieramos mas pero este era el mas famoso).
+
+9. Pero como canvas tambien tenia librerias decidimos buscar por alguna que nos facilitase aun mas un entorno lo mas parecido a lo que teniamos en mente. Asi encontramos JSiso.
+
+10. JSiso es una libreria diseñada por (buscar nombre) la cual nos permite generar un mapa ¿simetrico? e isometrico y... (listado de cosas que puede hacer). (imagen de un mapa).
+
+11. Tras un tiempo investigando y modificando la libreria para hacer que funcionase como nosotros queriamos (incluso logramos poder generar un mapa con Tiles {link a tiles} e importarlo en el juego) nos dimos cuenta de lo siguiente: (copiar el trozo donde el tio dice que el proyecto se le ha borrado)
+
+12. Por eso era que la libreria no iba del todo bien: 
+	a) Los personajes se mueven de casilla en casilla como si se transportasen
+	b) (listado de todo lo que iba mal y habeis arreglado que yo no se xD)
+
+13. Igualmente y pese a sus defectos, con el tiempo que llevabamos invertido y los arreglos que se le pudieron hacer decidimos seguir con ella.
+
+14. A la par se fue ampliando la base de datos conforme a lo que ibamos a necesitar (imagenes de tablas como chars, chars_users, etc..)
+
+15. Mientras se investigaba JSiso tambien se empezo a implementar Socket.io. Socket.io era lo que nos permitiria las funcionalidades Online del juego.
+
+16. Buscando por internet encontramos esto: (link al chat de socket.io) Un chat hecho con socket.io funcional.
+
+17. Tras mirar el codigo decidimos que podria ser lo que necesitabamos y lo modificamos para que se pareciera los mas posible a un chat de un juego online normal (imagen del chat del juego).
+
+18. Una vez logramos tener el mapa con un personaje y el chat con socket.io faltaba unirlos para que el mapa pudiera mostrar los diferentes jugadores (imagen con dos jugadores en un mapa).
+
+19. Lograr eso no fue muy dificil, al menos hasta que se le implementaron sprites y animaciones a los pj... (poner alguna imagen donde se muestre qe deberia haber 2 pj y solo haya uno o de algun bug parecido.)
+
+20. Tras muchas pruebas logramos hacer que cada pj pudiera ser "diferente" y tuviera sus sprites y animaciones. (gif de un arquero y un guerrero por ejemplo?)
+
+21. A estas alturas (1 semana mas o menos antes de hoy) nos dimos cuenta que la mayoria de cosas que queriamos implementar no ibana ser posibles: 
+	a) una tienda para comprar items
+	b) que cada pj tuviera su mapa
+	c) poder hacer equipos
+	d) subir de nivel
+	e) npcs
+Y un largo listado que dejaremos mejor aqui.
+
+22. Entre todas esas cosas que no nos iban a dar tiempo habia una muy importante: COMBATES POR TURNOS
+
+23. Tuvimos que hacer una reunion de mergencia para ver como solucionabamos esto porque un juego de guerra sin guerra no es un juego.
+
+24. Aqui fue donde nos iluminamos y recordamos un juego que se puso muy de moda hara un año mas o menos: Agar.io (link al juego)
+
+25. Agar.io es juego donde tu entras, apareces en un punto del mapa como una bola y tienes que intentar devorar a los que sean mas pequeños que tu para irte haciendo grande (imagen del juego). Si te matan tienes que volver a empezar.
+
+26. Decidimos intentar implementar el mismo sistema que tenia agar.io en nuestro juego. Partidas rapidas donde entras e intentas matar la mayor gente que puedas antes de que ellos te maten a ti.
+
+27. Ahora que ya teniamos la idea de como queriamos que fuera el sistema de combate llegaba la hora de hacerlo(imagen de matrix xD).
+
+28. Tras unas cuantas modificaciones logramos hacer que el jugador A pegase al jugador B y no matase al jugador C o que al matar a un jugador no se borrase el mapa entero: (intentar buscar una imagen de cuando el mapa peta o si no pos na)
+
+29. Ya con online activado, los combates activos y a menos de 4 dias de la presentacion tuvimos que decidir por: arreglar fallos o implementar mas cosas (sin contar que faltaba por acabar la documentacio, esta presentacion, etc)
+
+30. Decidimos darle algo de diseño a la pagina y arreglar algunos cuantos errores (aunque es posible que con la demo de ahora algo falle pues hay errores que no sabemos cuando ni porque se reproducen, quedais avisados) 
+
+31. Para acabar y darle un toque mas profesional, se creo un mapa nuevo y se le añadio sonido al juego (sonido gratuito sin problemas de copyrigth)
+
+32. Tras todo este toston vamos a lo que nos importa: el juego (link) (cabe decir que el juego esta en produccion pero tenemos algunos fallos con los puertos y la velocidad no es muy buena que digamos asi que las pruebas se haran en local aunque podeis entrar a la web: warbo.adrianarbosnavas.com para echarle un ojo)

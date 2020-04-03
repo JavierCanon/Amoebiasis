@@ -1,0 +1,60 @@
+{% extends "layouts/master.html" %} {% set url = '/character' %} {% block content %}
+<div class="container char">
+	<div class="row">
+		<div class="col-md-6">
+			{{sess.character_name}} - {{sess.character_class}} con {{sess.character_weapon}}
+			<ul>Estadísticas:
+				<li id="hp">Vida: {{sess.character_hp}}</li>
+				<li id="attack">Ataque: {{sess.character_attack}}</li>
+				<li id="defense">Defensa: {{sess.character_defense}}</li>
+				<li id="speed">Velocidad: {{sess.character_speed}}</li>
+			</ul>
+			<input id="name" type="hidden" value="{{sess.character_name}}">
+		</div>
+		<div class="col-md-6">
+			{% if sess.character_class == 'Guerrero' %}
+				<img src="/static/img/web/guerrero.png" alt="Personaje">
+			{% elif sess.character_class == 'Mago' %}
+				<img src="/static/img/web/mago.png" alt="Personaje">
+			{% else %}
+				<img src="/static/img/web/arquero.png" alt="Personaje">
+			{% endif %}
+		</div>
+		<button class="btn btn-danger" id="borrar">Eliminar Personaje</button>
+	</div>
+</div>
+<script>
+$('#borrar').click(function() {
+	var parameters = {
+		name: $('#name').attr('value')
+	};
+	var sure = confirm("¿Estás seguro de que quieres eliminar el personaje?");
+	if (sure) {
+		// console.log("params: " + JSON.stringify(parameters));
+		$.post('/deleteselectedchar', parameters, function(data) {
+			$.extend({
+				redirectPost: function(location, args) {
+					var form = $('<form></form>');
+					form.attr("method", "post");
+					form.attr("action", location);
+
+					$.each(args, function(key, value) {
+						var field = $('<input></input>');
+
+						field.attr("type", "hidden");
+						field.attr("name", key);
+						field.attr("value", value);
+
+						form.append(field);
+					});
+					$(form).appendTo('body').submit();
+				}
+			});
+			var redirect = '/';
+			$.redirectPost(redirect);
+		});
+	}
+
+});
+</script>
+{% endblock %}

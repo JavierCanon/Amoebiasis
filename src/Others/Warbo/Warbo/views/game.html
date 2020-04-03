@@ -1,0 +1,98 @@
+{% extends 'layouts/master.html'%} {% set url = '/game' %} {% block head %}
+<script data-main="../static/js/config.js" src="../static/js/requirejs/require.js"></script>
+<script src="../static/js/game.js"></script>
+<!-- <script src="/static/js/chat.js"></script> -->
+<!-- AUDIO -->
+<script>
+var audio = new Audio('static/music/bgm.mp3');
+audio.play();
+
+function startbgmusic() {
+	setInterval(function() {
+		audio.pause();
+		audio.currentTime = 0;
+		audio.play();
+	}, 302000);
+}
+
+startbgmusic();
+</script>
+<style type="text/css">
+html,
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	overflow: hidden;
+}
+
+.twitter-follow-button {
+	position: absolute !important;
+}
+
+a,
+a:visited {
+	color: #FFF;
+}
+
+.gameInfo {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width: 200px;
+	height: 24px;
+	background: #222244;
+	text-align: center;
+	color: #FFF;
+}
+</style>
+{% endblock %} {% block content %}
+<div id="barras">
+	<p>{{ sess.character_name }} - {{ sess.character_class }}</p>
+	<div class="health-bar" data-total="{{sess.character_hp}}" data-value="{{sess.character_hp}}">
+		<div class="bar">
+			<div class="hit"></div>
+		</div>
+	</div>
+	<p>Muertes efectuadas: <span id="killCount">0</span></p>
+</div>
+<div id="habilidades">
+	<ul>
+		<li id="autoattack">
+			<img src="/static/img/equipment/8infantry_axe.png" />
+		</li>
+	</ul>
+</div>
+<div id="gamechat" class="no-active">
+	<ul class="pages">
+		<li class="chat page">
+			<div class="chatArea">
+				<ul class="messages"></ul>
+			</div>
+			<input class="inputMessage" placeholder="Escribe aquí..." />
+		</li>
+		<input class="usernameInput" value="{{sess.character_name}}" type="hidden" disabled="disabled" />
+		<input class="imageInput" value="{{sess.character_image}}" type="hidden" disabled="disabled" />
+		<input class="weaponInput" value="{{sess.character_weapon}}" type="hidden" disabled="disabled" />
+		<input class="headInput" value="{{sess.character_head}}" type="hidden" disabled="disabled" />
+		<input class="xPosInput" value="{{sess.character_xPos}}" type="hidden" disabled="disabled" />
+		<input class="yPosInput" value="{{sess.character_yPos}}" type="hidden" disabled="disabled" />
+		<input class="directionInput" value="{{sess.character_direction}}" type="hidden" disabled="disabled" />
+		<input class="actionInput" value="{{sess.character_action}}" type="hidden" disabled="disabled" />
+		<input class="widthInput" value="{{sess.character_width}}" type="hidden" disabled="disabled" />
+		<input class="heightInput" value="{{sess.character_height}}" type="hidden" disabled="disabled" />
+		<input class="hpInput" value="{{sess.character_hp}}" type="hidden" disabled="disabled" />
+		<input class="attackInput" value="{{sess.character_attack}}" type="hidden" disabled="disabled" />
+		<input class="defenseInput" value="{{sess.character_defense}}" type="hidden" disabled="disabled" />
+		<input class="speedInput" value="{{sess.character_speed}}" type="hidden" disabled="disabled" />
+		<input class="soundInput" value="{{sess.character_sound}}" type="hidden" disabled="disabled" />
+		<input class="classInput" value="{{sess.character_class}}" type="hidden" disabled="disabled" />
+		<!-- <li class="login page">
+      <div class="form">
+        <h3 class="title">Press Enter to join</h3>
+        <input class="usernameInput" value="{{sess.user}}" type="text" maxlength="14" disabled="disabled" />
+      </div>
+    </li>-->
+	</ul>
+</div>
+{% endblock %}

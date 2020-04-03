@@ -1,0 +1,129 @@
+{% extends "layouts/master.html" %} {% set url = '/newcharacter' %} {% block content %}
+<div class="container char">
+	<select name="samplechars" id="samplechars">
+		{% for char in result %}
+		<option value="{{char.id}}">{{char.name}}</option>
+		{% endfor %}
+	</select>
+	<select name="weaponType" id="weaponType"></select>
+	<select name="gender" id="gender">
+		<option value="male">Hombre</option>
+		<option value="female">Mujer</option>
+	</select>
+	<ul id="charstats"></ul>
+	<input type="text" id="name" placeholder="Nombre del personaje" required="required">
+	<button id="guardar" class="btn btn-success">Confirmar</button>
+</div>
+<script>
+window.onload = alCargar;
+
+function alCargar() {
+	var parameters = {
+		search: $('#samplechars').val()
+	};
+
+	$.post('/loadsamplechars', parameters, function(data) {
+
+		$('#weaponType').empty();
+		for (var i = 0; i < data[1].length; i++) {
+			$('#weaponType').append("<option value=" + data[1][i].img + ">" + data[1][i].name + "</option>");
+			if ($('#weaponType :selected').text() === data[1][i].name) {
+				var pos = i;
+			}
+		}
+
+		$('#charstats').empty();
+		$('#charstats').append("<li id='hp' value='" + (data[0].hp + data[1][pos].hp) + "'>Vida: " + (data[0].hp + data[1][pos].hp) + "</li>");
+		$('#charstats').append("<li id='attack' value='" + (data[0].attack + data[1][pos].attack) + "'>Ataque: " + (data[0].attack + data[1][pos].attack) + "</li>");
+		$('#charstats').append("<li id='defense' value='" + (data[0].defense + data[1][pos].defense) + "'>Defensa: " + (data[0].defense + data[1][pos].defense) + "</li>");
+		$('#charstats').append("<li id='speed' value='" + (data[0].speed + data[1][pos].speed) + "'>Velocidad: " + (data[0].speed + data[1][pos].speed) + "</li>");
+	});
+}
+
+$("#samplechars").change(function() {
+	var parameters = {
+		search: $(this).val()
+	};
+
+	$.post('/loadsamplechars', parameters, function(data) {
+
+		$('#weaponType').empty();
+		for (var i = 0; i < data[1].length; i++) {
+			$('#weaponType').append("<option value=" + data[1][i].img + ">" + data[1][i].name + "</option>");
+			if ($('#weaponType :selected').text() === data[1][i].name) {
+				var pos = i;
+			}
+		}
+
+		$('#charstats').empty();
+		$('#charstats').append("<li id='hp' value='" + (data[0].hp + data[1][pos].hp) + "'>Vida: " + (data[0].hp + data[1][pos].hp) + "</li>");
+		$('#charstats').append("<li id='attack' value='" + (data[0].attack + data[1][pos].attack) + "'>Ataque: " + (data[0].attack + data[1][pos].attack) + "</li>");
+		$('#charstats').append("<li id='defense' value='" + (data[0].defense + data[1][pos].defense) + "'>Defensa: " + (data[0].defense + data[1][pos].defense) + "</li>");
+		$('#charstats').append("<li id='speed' value='" + (data[0].speed + data[1][pos].speed) + "'>Velocidad: " + (data[0].speed + data[1][pos].speed) + "</li>");
+	});
+});
+
+$("#weaponType").change(function() {
+	var parameters = {
+		search: $("#samplechars").val()
+	};
+
+	$.post('/loadsamplechars', parameters, function(data) {
+
+		for (var i = 0; i < data[1].length; i++) {
+			if ($('#weaponType :selected').text() === data[1][i].name) {
+				var pos = i;
+			}
+		}
+
+		$('#charstats').empty();
+		$('#charstats').append("<li id='hp' value='" + (data[0].hp + data[1][pos].hp) + "'>Vida: " + (data[0].hp + data[1][pos].hp) + "</li>");
+		$('#charstats').append("<li id='attack' value='" + (data[0].attack + data[1][pos].attack) + "'>Ataque: " + (data[0].attack + data[1][pos].attack) + "</li>");
+		$('#charstats').append("<li id='defense' value='" + (data[0].defense + data[1][pos].defense) + "'>Defensa: " + (data[0].defense + data[1][pos].defense) + "</li>");
+		$('#charstats').append("<li id='speed' value='" + (data[0].speed + data[1][pos].speed) + "'>Velocidad: " + (data[0].speed + data[1][pos].speed) + "</li>");
+	});
+});
+
+$("#guardar").click(function() {
+	var name = $("#name").val();
+	if (name && name.search(/[^a-zA-Z0-9]+/) === -1) {
+		var parameters = {
+			name: name,
+			hp: $("#hp").attr('value'),
+			attack: $("#attack").attr('value'),
+			defense: $("#defense").attr('value'),
+			speed: $("#speed").attr('value'),
+			class: $('#samplechars :selected').text(),
+			weapon: $('#weaponType :selected').val(),
+			weaponName: $('#weaponType :selected').text(),
+			gender: $('#gender :selected').text()
+		};
+		$.post('/saveselectedchar', parameters, function() {
+			$.extend({
+				redirectPost: function(location, args) {
+					var form = $('<form></form>');
+					form.attr("method", "post");
+					form.attr("action", location);
+
+					$.each(args, function(key, value) {
+						var field = $('<input></input>');
+
+						field.attr("type", "hidden");
+						field.attr("name", key);
+						field.attr("value", value);
+
+						form.append(field);
+					});
+					$(form).appendTo('body').submit();
+				}
+			});
+			var redirect = '/character';
+			$.redirectPost(redirect, {
+				charname: $("#name").val()
+			});
+		});
+	}
+
+});
+</script>
+{% endblock %}

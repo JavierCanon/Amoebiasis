@@ -1,0 +1,5 @@
+servers:
+  default:
+    address: ws://localhost:443
+    motd:
+      - "Welcome to our server!"

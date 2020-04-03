@@ -1,0 +1,25 @@
+{
+    "name": "HerokuAgarServ",
+    "version": "1.6.2",
+    "description": "Agario server for Heroku from Multiogar-Edited(https://github.com/Megabyte918/multiogar-edited)",
+    "author": "JE5143 and Megabyte918",
+    "homepage": "https://github.com/JE5143/agar",
+    "license": "Apache-2.0",
+    "main": "src/index.js",
+    "dependencies": {
+        "ws": "latest",
+        "figlet": "latest"
+    },
+    "devDependencies": {},
+     "scripts": {
+        "start": "cd src && node index.js",
+         "discord": "npm i discord.js && cd run && node console-discord.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/JE5143/agar"
+    },
+    "bugs": {
+        "url": "https://github.com/JE5143/agar/issues"
+    }
+}
